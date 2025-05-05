@@ -14,7 +14,7 @@ userRouter.post("/signin", function (req, res) {
   });
 });
 
-userRouter.get("/course", function (req, res) {
+userRouter.get("/purchase", function (req, res) {
   res.json({
     message: "signup endpoint",
   });
