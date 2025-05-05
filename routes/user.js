@@ -2,17 +2,17 @@ const bcrypt = require("bcrypt");
 const { Router } = require("express");
 const { userModel } = require("../db");
 const jwt = require("jsonwebtoken");
-const JWT_USER_PASSWORD = "awsedrfgthjkm";
+const { JWT_USER_PASSWORD } = require("../config");
 const { z } = require("zod");
 
 const userRouter = Router();
 
 userRouter.post("/signup", async function (req, res) {
   const requirebody = z.object({
-    email: z.string().min(5).max(20).email(),
-    password: z.string().min(8).max(20),
-    firstName: z.string().min(3).max(20),
-    lastName: z.string().min(4).max(20),
+    email: z.string().min(2).max(100).email(),
+    password: z.string().min(4).max(50),
+    firstName: z.string().min(1).max(50),
+    lastName: z.string().min(1).max(50),
   });
 
   const parsesDataWithSuccess = requirebody.safeParse(req.body);
